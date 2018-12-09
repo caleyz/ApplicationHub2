@@ -17,6 +17,7 @@ namespace BlackWinformsTest
 {
     public partial class mainForm : MetroFramework.Forms.MetroForm
     {
+        public string messageBoxVar = "";
         System.Windows.Forms.Timer t1 = new System.Windows.Forms.Timer();
         public static List<Tile> globalTileList = new List<Tile>();
         public static string filePath = @"C:\Users\Zack\Documents\BlackWinformsTest.json";
@@ -29,18 +30,13 @@ namespace BlackWinformsTest
         public mainForm()
         {
             InitializeComponent();
-            gridButton.BackColor = Color.FromArgb(100, Color.Transparent);
+            //gridButton.BackColor = Color.FromArgb(100, Color.Transparent);
             GetGridTiles();
         }
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            this.TopMost = true;
-            Opacity = 0;     
-            t1.Interval = 20; 
-            t1.Tick += new EventHandler(fadeIn); 
-            t1.Start();
-            this.TopMost = false;
+
         }
 
         public void GetGridTiles()
@@ -113,26 +109,27 @@ namespace BlackWinformsTest
 
         private void AddTileLabel_Click(object sender, EventArgs e)
         {
-            gridButton.Visible = true;            
+            gridImage.Visible = true;            
         }
 
-        private void RemoveTileLabel_Click(object sender, EventArgs e)
+        private void closeButton_Click(object sender, EventArgs e)
         {
-            gridButton.Visible = false;
+            Application.Exit();
         }
 
-        private void gridButton_Click(object sender, EventArgs e)
+        private void gridImage_Click(object sender, EventArgs e)
         {
-            var coordinates = gridButton.PointToClient(Cursor.Position);
+            var coordinates = gridImage.PointToClient(Cursor.Position);
             int rowNum = Convert.ToInt32(Math.Floor((decimal)coordinates.Y / 100));
             int colNum = Convert.ToInt32(Math.Floor((decimal)coordinates.X / 100));
             if (rowNum > 3 || colNum > 7)
             {
-                gridButton.Visible = false;
+                gridImage.Visible = false;
                 return;
             }
-            gridButton.Visible = false;
+            gridImage.Visible = false;
             boxLabel.Text = String.Format("Row {0}, Column {1}", rowNum, colNum);
+            var matches = rowColumns.Where(p => p.row == rowNum).Where(x => x.column == colNum);
             if (globalTileList.Count == 0)
             {
                 globalTileList.Add(new Tile()
@@ -155,9 +152,11 @@ namespace BlackWinformsTest
                 metroTile.Size = new Size(70, 70);
                 this.Controls.Add(metroTile);
             }
-            else if (rowColumns.Count != rowColumns.GroupBy(x => new { x.row, x.column }).Distinct().Count())
+            else if (matches.Count() >= 1)
             {
-                MessageBox.Show("Why would you want to add a tile to a place where one already exists :thinking:");
+                GlobalVars.MessageBoxPassedVar = "AlreadyExists";
+                messageBoxForm childForm = new messageBoxForm();
+                childForm.ShowDialog();
             }
             else
             {
@@ -184,9 +183,9 @@ namespace BlackWinformsTest
             }
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
+        private void RemoveTileLabel_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            gridImage.Visible = false;
         }
     }
 }

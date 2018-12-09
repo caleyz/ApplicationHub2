@@ -59,6 +59,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalVars.cs" />
+    <Compile Include="messageBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="messageBoxForm.Designer.cs">
+      <DependentUpon>messageBoxForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="mainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +83,9 @@
     <Compile Include="TransparentControl.Designer.cs">
       <DependentUpon>TransparentControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="messageBoxForm.resx">
+      <DependentUpon>messageBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
     </EmbeddedResource>
