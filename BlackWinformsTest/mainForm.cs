@@ -178,6 +178,7 @@ namespace BlackWinformsTest
                 metroTile.Location = new Point(((colNum * 100) + xOffset), ((rowNum * 100) + yOffset));
                 //metroTile.Top = Top;
                 //metroTile.Left = Left;
+                //test
                 metroTile.Size = new Size(70, 70);
                 this.Controls.Add(metroTile);
             }
