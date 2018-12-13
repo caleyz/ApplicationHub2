@@ -205,7 +205,7 @@ namespace BlackWinformsTest
                     maxID++;
                     metroTile.Size = new Size(71, 71);
                     this.Controls.Add(metroTile);
-                    File.WriteAllText(filePath, JsonConvert.SerializeObject(globalTileList));
+                    File.WriteAllText(filePath, JsonConvert.SerializeObject(globalTileList, Formatting.Indented));
                 }
                 else if (matches.Count() >= 1)
                 {
@@ -222,7 +222,7 @@ namespace BlackWinformsTest
                     maxID++;
                     metroTile.Size = new Size(71, 71);
                     this.Controls.Add(metroTile);
-                    File.WriteAllText(filePath, JsonConvert.SerializeObject(globalTileList));
+                    File.WriteAllText(filePath, JsonConvert.SerializeObject(globalTileList, Formatting.Indented));
                 }
             }
             else if (removeBool)
@@ -231,7 +231,7 @@ namespace BlackWinformsTest
                 {
                     rowColumns.RemoveAll(p => p.row == rowNum && p.column == colNum);
                     globalTileList.RemoveAll(p => p.GridRowCol.row == rowNum && p.GridRowCol.column == colNum);
-                    File.WriteAllText(filePath, JsonConvert.SerializeObject(globalTileList));
+                    File.WriteAllText(filePath, JsonConvert.SerializeObject(globalTileList, Formatting.Indented));
                     foreach (var control in this.Controls.OfType<MetroTile>())
                     {
                         if (control.Location.X == ((colNum * 100) + xOffset) && control.Location.Y == ((rowNum * 100) + yOffset))
@@ -242,6 +242,7 @@ namespace BlackWinformsTest
                     }
                 }
             }
+            addBool = removeBool = false;
         }        
     }
 }
