@@ -120,6 +120,7 @@
             this.ImeMode = System.Windows.Forms.ImeMode.Katakana;
             this.MaximizeBox = false;
             this.Name = "mainForm";
+            this.Opacity = 0D;
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Teal;
             this.Text = "Application Hub";

@@ -117,6 +117,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\RemoveGridLayout2.png" />
+    <None Include="Resources\RemoveGridLayout.png" />
     <None Include="Resources\GridLayout5.png" />
     <None Include="Resources\GridLayout4.png" />
     <None Include="Resources\GridLayout3.png" />
