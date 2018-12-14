@@ -117,11 +117,13 @@
             this.Controls.Add(this.RemoveTileLabel);
             this.Controls.Add(this.AddTileLabel);
             this.Controls.Add(this.closeButton);
+            this.DoubleBuffered = false;
             this.ImeMode = System.Windows.Forms.ImeMode.Katakana;
             this.MaximizeBox = false;
             this.Name = "mainForm";
             this.Opacity = 0D;
             this.Resizable = false;
+            this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.SystemShadow;
             this.Style = MetroFramework.MetroColorStyle.Teal;
             this.Text = "Application Hub";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;

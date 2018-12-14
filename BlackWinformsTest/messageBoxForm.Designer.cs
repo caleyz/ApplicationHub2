@@ -56,7 +56,7 @@
             this.messageLabel.AutoSize = true;
             this.messageLabel.Font = new System.Drawing.Font("Open Sans Light", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.messageLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.messageLabel.Location = new System.Drawing.Point(41, 88);
+            this.messageLabel.Location = new System.Drawing.Point(59, 94);
             this.messageLabel.MaximumSize = new System.Drawing.Size(200, 200);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(0, 23);

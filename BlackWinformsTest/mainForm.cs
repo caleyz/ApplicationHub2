@@ -64,6 +64,10 @@ namespace BlackWinformsTest
                 MetroTile metroTile = new MetroTile();
                 metroTile.Location = new Point(((tile.GridRowCol.column * 100) + xOffset), ((tile.GridRowCol.row * 100) + yOffset));
                 metroTile.Size = new Size(71, 71);
+                metroTile.Name = tile.ID.ToString();
+                ContextMenu cm = new ContextMenu();
+                cm.MenuItems.Add("Propertes", new EventHandler(Properties_click));
+                metroTile.ContextMenu = cm;
                 this.Controls.Add(metroTile);
             }
         }
@@ -169,12 +173,24 @@ namespace BlackWinformsTest
             return bmp;
         }
 
+        private void Properties_click(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            if (menuItem != null)
+            {
+                Control sourceControl = menuItem.GetContextMenu().SourceControl;
+                GlobalVars.PropertiesPassedVar = Convert.ToInt32(sourceControl.Name);
+                propertiesForm childForm = new propertiesForm();
+                childForm.ShowDialog();
+            }
+        }
+
         private void gridImage_Click(object sender, EventArgs e)
         {            
             var coordinates = gridImage.PointToClient(Cursor.Position);
             int rowNum = Convert.ToInt32(Math.Floor((decimal)coordinates.Y / 100));
             int colNum = Convert.ToInt32(Math.Floor((decimal)coordinates.X / 100));
-            if (rowNum > 3 || colNum > 7)
+            if (rowNum > 3 || colNum > 7 || rowNum < 0 || colNum < 0)
             {
                 gridImage.Visible = false;
                 return;
@@ -183,7 +199,8 @@ namespace BlackWinformsTest
             {
                 ID = (maxID + 1),
                 Name = "placeholderName",
-                UseProgramIcon = false,
+                ProgramLocation = "",
+                UseProgramIcon = true,
                 ImageLocation = "",
                 GridRowCol = new GridLocation()
                 {
@@ -191,6 +208,8 @@ namespace BlackWinformsTest
                     column = colNum
                 }
             };
+            ContextMenu cm = new ContextMenu();
+            cm.MenuItems.Add("Propertes", new EventHandler(Properties_click));            
             gridImage.Visible = false;
             boxLabel.Text = String.Format("Row {0}, Column {1}", rowNum, colNum);
             var matches = rowColumns.Where(p => p.row == rowNum && p.column == colNum);
@@ -202,6 +221,8 @@ namespace BlackWinformsTest
                     rowColumns.Add(new GridLocation { row = rowNum, column = colNum });
                     MetroTile metroTile = new MetroTile();
                     metroTile.Location = new Point(((colNum * 100) + xOffset), ((rowNum * 100) + yOffset));
+                    metroTile.ContextMenu = cm;
+                    metroTile.Name = (maxID + 1).ToString();
                     maxID++;
                     metroTile.Size = new Size(71, 71);
                     this.Controls.Add(metroTile);
@@ -219,6 +240,8 @@ namespace BlackWinformsTest
                     rowColumns.Add(new GridLocation { row = rowNum, column = colNum });
                     MetroTile metroTile = new MetroTile();
                     metroTile.Location = new Point(((colNum * 100) + xOffset), ((rowNum * 100) + yOffset));
+                    metroTile.ContextMenu = cm;
+                    metroTile.Name = (maxID + 1).ToString();
                     maxID++;
                     metroTile.Size = new Size(71, 71);
                     this.Controls.Add(metroTile);

@@ -60,6 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalVars.cs" />
+    <Compile Include="propertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="propertiesForm.Designer.cs">
+      <DependentUpon>propertiesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="messageBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     <Compile Include="TransparentControl.Designer.cs">
       <DependentUpon>TransparentControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="propertiesForm.resx">
+      <DependentUpon>propertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="messageBoxForm.resx">
       <DependentUpon>messageBoxForm.cs</DependentUpon>
     </EmbeddedResource>
