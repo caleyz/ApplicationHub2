@@ -53,13 +53,12 @@
             // 
             // messageLabel
             // 
-            this.messageLabel.AutoSize = true;
             this.messageLabel.Font = new System.Drawing.Font("Open Sans Light", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.messageLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.messageLabel.Location = new System.Drawing.Point(59, 94);
-            this.messageLabel.MaximumSize = new System.Drawing.Size(200, 200);
+            this.messageLabel.Location = new System.Drawing.Point(23, 79);
+            this.messageLabel.MaximumSize = new System.Drawing.Size(4000, 4000);
             this.messageLabel.Name = "messageLabel";
-            this.messageLabel.Size = new System.Drawing.Size(0, 23);
+            this.messageLabel.Size = new System.Drawing.Size(274, 101);
             this.messageLabel.TabIndex = 7;
             this.messageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -76,12 +75,12 @@
             this.MaximizeBox = false;
             this.Name = "messageBoxForm";
             this.Resizable = false;
+            this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.SystemShadow;
             this.Style = MetroFramework.MetroColorStyle.Teal;
             this.Text = "Message Box";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Load += new System.EventHandler(this.messageBoxForm_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

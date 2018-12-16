@@ -40,6 +40,15 @@ namespace BlackWinformsTest
                 case "AlreadyExists":
                     messageLabel.Text = "A button already exists in this location";
                     break;
+                case "EmptyName":
+                    messageLabel.Text = "You cannot submit these properties with an empty name";
+                    break;
+                case "ChooseImageIfNoChecked":
+                    messageLabel.Text = "Because you have chosen not to use the default program icon, you must choose an image location";
+                    break;
+                case "ImageChosenButYesChecked":
+                    messageLabel.Text = "You have chosen an image but have chosen to use the default program icon - please either check 'no' or clear your image location";
+                    break;
                 default:
                     break;
             }

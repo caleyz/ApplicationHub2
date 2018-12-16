@@ -33,6 +33,7 @@
             this.RemoveTileLabel = new System.Windows.Forms.Label();
             this.boxLabel = new System.Windows.Forms.Label();
             this.gridImage = new BlackWinformsTest.TransparentControl();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // closeButton
@@ -106,12 +107,24 @@
             this.gridImage.Visible = false;
             this.gridImage.Click += new System.EventHandler(this.gridImage_Click);
             // 
+            // metroTile1
+            // 
+            this.metroTile1.CustomForeColor = true;
+            this.metroTile1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.metroTile1.Location = new System.Drawing.Point(266, 29);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(75, 23);
+            this.metroTile1.TabIndex = 8;
+            this.metroTile1.Text = "metroTile1";
+            this.metroTile1.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 500);
             this.ControlBox = false;
+            this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.gridImage);
             this.Controls.Add(this.boxLabel);
             this.Controls.Add(this.RemoveTileLabel);
@@ -139,6 +152,7 @@
         private System.Windows.Forms.Label RemoveTileLabel;
         private System.Windows.Forms.Label boxLabel;
         private TransparentControl gridImage;
+        private MetroFramework.Controls.MetroTile metroTile1;
     }
 }
 
