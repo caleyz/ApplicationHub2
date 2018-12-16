@@ -49,6 +49,7 @@
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closeButton.BackColor = System.Drawing.Color.Transparent;
             this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.closeButton.FlatAppearance.BorderSize = 0;
             this.closeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.closeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -206,8 +207,8 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
+            this.CancelButton = this.closeButton;
             this.ClientSize = new System.Drawing.Size(450, 300);
-            this.ControlBox = false;
             this.Controls.Add(this.imageClearButton);
             this.Controls.Add(this.programLocationLabel);
             this.Controls.Add(this.programLocationButton);

@@ -35,7 +35,8 @@ namespace BlackWinformsTest
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            GlobalVars.PassedBackVar = null;
+            this.Close();            
         }
 
         private void propertiesForm_Shown(object sender, EventArgs e)
@@ -81,7 +82,8 @@ namespace BlackWinformsTest
             tileChosen.Name = nameTextbox.Text;
             tileChosen.ProgramLocation = programLocationLabel.Text;
             tileChosen.UseProgramIcon = yesRadioButton.Checked;
-            tileChosen.ImageLocation = imageLocationLabel.Text;            
+            tileChosen.ImageLocation = imageLocationLabel.Text;
+            GlobalVars.PassedBackVar = tileChosen;
             this.Close();
         }
 

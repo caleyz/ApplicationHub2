@@ -218,6 +218,14 @@ namespace BlackWinformsTest
                 GlobalVars.PropertiesPassedVar = Convert.ToInt32(sourceControl.Name);
                 propertiesForm childForm = new propertiesForm();
                 childForm.ShowDialog();
+                if (GlobalVars.PassedBackVar != null)
+                {
+                    sourceControl.Text = GlobalVars.PassedBackVar.Name;
+                    if (GlobalVars.PassedBackVar.ImageLocation != "")
+                    {
+                        (sourceControl as MetroTile).TileImage = ResizeImage(Image.FromFile(GlobalVars.PassedBackVar.ImageLocation), 71, 71);
+                    }
+                }
                 File.WriteAllText(filePath, JsonConvert.SerializeObject(globalTileList, Formatting.Indented));
             }
         }
@@ -252,20 +260,7 @@ namespace BlackWinformsTest
             var matches = rowColumns.Where(p => p.row == rowNum && p.column == colNum);
             if (addBool)
             {
-                if (globalTileList.Count == 0)
-                {
-                    globalTileList.Add(baseTile);
-                    rowColumns.Add(new GridLocation { row = rowNum, column = colNum });
-                    MetroTile metroTile = new MetroTile();
-                    metroTile.Location = new Point(((colNum * 100) + xOffset), ((rowNum * 100) + yOffset));
-                    metroTile.ContextMenu = cm;
-                    metroTile.Name = (maxID + 1).ToString();
-                    maxID++;
-                    metroTile.Size = new Size(71, 71);
-                    this.Controls.Add(metroTile);
-                    File.WriteAllText(filePath, JsonConvert.SerializeObject(globalTileList, Formatting.Indented));
-                }
-                else if (matches.Count() >= 1)
+                if (matches.Count() >= 1)
                 {
                     GlobalVars.MessageBoxPassedVar = "AlreadyExists";
                     messageBoxForm childForm = new messageBoxForm();
@@ -277,6 +272,12 @@ namespace BlackWinformsTest
                     rowColumns.Add(new GridLocation { row = rowNum, column = colNum });
                     MetroTile metroTile = new MetroTile();
                     metroTile.Location = new Point(((colNum * 100) + xOffset), ((rowNum * 100) + yOffset));
+                    metroTile.UseTileImage = true;
+                    metroTile.Text = "placeholderName";
+                    metroTile.ForeColor = Color.Black;
+                    metroTile.CustomForeColor = true;
+                    metroTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+                    metroTile.TextAlign = ContentAlignment.BottomCenter;
                     metroTile.ContextMenu = cm;
                     metroTile.Name = (maxID + 1).ToString();
                     maxID++;
